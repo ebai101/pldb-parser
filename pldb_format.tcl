@@ -63,7 +63,7 @@ proc plpr {} {
     string "manufacturer"
     string "min version"
     string "maj version"
-    move 4
+    uint32 "type"
     string "vst_id"
     move 2
     set num_categories [uint8]

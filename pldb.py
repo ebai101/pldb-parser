@@ -3,7 +3,7 @@ from pprint import pprint
 from chunk_reader import Chunk
 
 
-infile = "pldb.dat"
+infile = "/Users/ethan/Library/Application Support/Propellerhead Software/Reason/Caches/__PluginDatabase_v4-arm64.dat"
 out_data = {"plugins": []}
 
 
@@ -61,7 +61,7 @@ def parse(f):
         plugin["plpr"]["manufacturer"] = readstr(plpr)
         plugin["plpr"]["min_version"] = readstr(plpr)
         plugin["plpr"]["maj_version"] = readstr(plpr)
-        plpr.seek(4, whence=1)
+        plugin["plpr"]["type"] = struct.unpack(">I", plpr.read(4))[0]
         plugin["plpr"]["vst_id"] = readstr(plpr)
         plpr.seek(2, whence=1)
         plugin["plpr"]["categories"] = []
